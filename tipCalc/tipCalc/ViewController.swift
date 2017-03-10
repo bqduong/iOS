@@ -53,10 +53,12 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
+        billField.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         loadDefaultTipPercentages()
+        calculateTip(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
