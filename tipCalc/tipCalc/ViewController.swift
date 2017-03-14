@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var billField: UITextField!
     
-    @IBOutlet weak var tipControl: UISegmentedControl!
+    //@IBOutlet weak var tipControl: UISegmentedControl!
     
     var defaultTipPercentageIndex: Int = 0
     
@@ -49,7 +49,10 @@ class ViewController: UIViewController {
     @IBAction func calculateTip(_ sender: AnyObject) {
         let tipPercentages = [0.15, 0.20, 0.25]
         let bill = Double(billField.text!) ?? 0
-        let tip = Double(bill * tipPercentages[tipControl.selectedSegmentIndex])
+        
+        let index = menuBar.selectedIndex
+        
+        let tip = Double(bill * tipPercentages[index])
         let total = bill + tip
         
         tipLabel.text = String(format: "+$%.2f", tip)
@@ -70,8 +73,6 @@ class ViewController: UIViewController {
         let defaults = UserDefaults.standard
         let tipPercentageIndex = defaults.integer(forKey: "defaultTipPercentageIndex")
         let tipPercentageIndexInt = Int(tipPercentageIndex)
-        
-        tipControl.selectedSegmentIndex = tipPercentageIndexInt
         
         return tipPercentageIndexInt
     }

@@ -21,6 +21,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     let cellId = "cellId"
     let imageNames = ["oneStar", "twoStars", "threeStars"]
+    var selectedIndex: Int = 0;
     var viewController: ViewController?
     
     override init(frame: CGRect) {
@@ -36,6 +37,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func setDefaultSelection() {
         let tipPercentageIndex = self.viewController?.loadDefaultTipPercentages()
         let selectedIndexPath = NSIndexPath(row: tipPercentageIndex!, section: 0)
+        selectedIndex = tipPercentageIndex!
         collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
     }
     
@@ -53,11 +55,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return cell
     }
     
-    func loadSavedDefaultValue(index: Int) {
-        let selectedIndexPath = NSIndexPath(row: index, section: 0)
-        collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width / 3, height: frame.height)
     }
@@ -68,6 +65,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.item
+        selectedIndex = index
         self.viewController?.calculateTip(index: index)
     }
     
