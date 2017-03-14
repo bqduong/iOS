@@ -20,7 +20,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        navigationItem.title = "gra·tu·i·ty"
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0 , y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "gra·tu·i·ty"
+        titleLabel.textColor = UIColor.white
+        navigationItem.titleView = titleLabel
+        
+        setupMenuBar()
+        setupSettingsButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,18 +59,44 @@ class ViewController: UIViewController {
         tipControl.selectedSegmentIndex =  Int(tipPercentageIndex)
     }
     
+    let menuBar: MenuBar = {
+        let mb = MenuBar()
+        return mb
+    }()
+    
+    private func setupMenuBar() {
+        view.addSubview(menuBar)
+        view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
+        view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
+    }
+    
+    func setupSettingsButton() {
+        let settingsImage = UIImage(named: "nav_more")?.withRenderingMode(.alwaysOriginal)
+        let settingsButtonItem = UIBarButtonItem(image: settingsImage, style: .plain, target: self, action: #selector(handleSettings))
+        
+        navigationItem.rightBarButtonItems = [settingsButtonItem]
+    }
+    
+    let settingsLauncher = SettingsLauncher()
+    
+    func handleSettings() {
+        settingsLauncher.showSettings()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
         billField.becomeFirstResponder()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         loadDefaultTipPercentages()
         calculateTip(self)
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 81/255, green: 169/255, blue: 90/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
+        
+        //self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 81/255, green: 169/255, blue: 90/255, alpha: 1)
+        
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
@@ -73,5 +109,5 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         print("view did disappear")
     }
+    
 }
-

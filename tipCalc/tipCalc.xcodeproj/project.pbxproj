@@ -15,6 +15,9 @@
 		CB2338AF1E67B9180004CD85 /* tipCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338AE1E67B9180004CD85 /* tipCalcTests.swift */; };
 		CB2338BA1E67B9180004CD85 /* tipCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338B91E67B9180004CD85 /* tipCalcUITests.swift */; };
 		CB2338C81E70D7350004CD85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338C71E70D7350004CD85 /* SettingsViewController.swift */; };
+		CB2338CC1E7641220004CD85 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CB1E7641220004CD85 /* MenuBar.swift */; };
+		CB2338CE1E7646460004CD85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CD1E7646460004CD85 /* Extensions.swift */; };
+		CB2338D01E77AD580004CD85 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CF1E77AD580004CD85 /* SettingsLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,10 @@
 		CB2338B51E67B9180004CD85 /* tipCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tipCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2338B91E67B9180004CD85 /* tipCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipCalcUITests.swift; sourceTree = "<group>"; };
 		CB2338BB1E67B9180004CD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB2338C71E70D7350004CD85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = tipCalc/SettingsViewController.swift; sourceTree = "<group>"; };
+		CB2338C71E70D7350004CD85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CB2338CB1E7641220004CD85 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		CB2338CD1E7646460004CD85 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CB2338CF1E77AD580004CD85 /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +85,6 @@
 		CB23388D1E67B9170004CD85 = {
 			isa = PBXGroup;
 			children = (
-				CB2338C71E70D7350004CD85 /* SettingsViewController.swift */,
 				CB2338981E67B9170004CD85 /* tipCalc */,
 				CB2338AD1E67B9180004CD85 /* tipCalcTests */,
 				CB2338B81E67B9180004CD85 /* tipCalcUITests */,
@@ -100,12 +105,14 @@
 		CB2338981E67B9170004CD85 /* tipCalc */ = {
 			isa = PBXGroup;
 			children = (
+				CB2338CA1E7640F30004CD85 /* Controller */,
+				CB2338C91E7640EA0004CD85 /* View */,
 				CB2338991E67B9170004CD85 /* AppDelegate.swift */,
-				CB23389B1E67B9170004CD85 /* ViewController.swift */,
 				CB23389D1E67B9170004CD85 /* Main.storyboard */,
 				CB2338A01E67B9170004CD85 /* Assets.xcassets */,
 				CB2338A21E67B9170004CD85 /* LaunchScreen.storyboard */,
 				CB2338A51E67B9170004CD85 /* Info.plist */,
+				CB2338CD1E7646460004CD85 /* Extensions.swift */,
 			);
 			path = tipCalc;
 			sourceTree = "<group>";
@@ -126,6 +133,24 @@
 				CB2338BB1E67B9180004CD85 /* Info.plist */,
 			);
 			path = tipCalcUITests;
+			sourceTree = "<group>";
+		};
+		CB2338C91E7640EA0004CD85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB2338CB1E7641220004CD85 /* MenuBar.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CB2338CA1E7640F30004CD85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB2338C71E70D7350004CD85 /* SettingsViewController.swift */,
+				CB23389B1E67B9170004CD85 /* ViewController.swift */,
+				CB2338CF1E77AD580004CD85 /* SettingsLauncher.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +287,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2338CE1E7646460004CD85 /* Extensions.swift in Sources */,
 				CB23389C1E67B9170004CD85 /* ViewController.swift in Sources */,
+				CB2338D01E77AD580004CD85 /* SettingsLauncher.swift in Sources */,
 				CB23389A1E67B9170004CD85 /* AppDelegate.swift in Sources */,
+				CB2338CC1E7641220004CD85 /* MenuBar.swift in Sources */,
 				CB2338C81E70D7350004CD85 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +535,7 @@
 				CB2338C01E67B9180004CD85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB2338C11E67B9180004CD85 /* Build configuration list for PBXNativeTarget "tipCalcTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +544,7 @@
 				CB2338C31E67B9180004CD85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB2338C41E67B9180004CD85 /* Build configuration list for PBXNativeTarget "tipCalcUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +553,7 @@
 				CB2338C61E67B9180004CD85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
