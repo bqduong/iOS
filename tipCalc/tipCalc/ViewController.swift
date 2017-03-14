@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    var defaultTipPercentageIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,8 @@ class ViewController: UIViewController {
         titleLabel.text = "gra·tu·i·ty"
         titleLabel.textColor = UIColor.white
         navigationItem.titleView = titleLabel
+        
+        defaultTipPercentageIndex = loadDefaultTipPercentages()
         
         setupMenuBar()
         setupSettingsButton()
@@ -51,12 +55,25 @@ class ViewController: UIViewController {
         tipLabel.text = String(format: "+$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
     }
+    
+    func calculateTip(index: Int) {
+        let tipPercentages = [0.15, 0.20, 0.25]
+        let bill = Double(billField.text!) ?? 0
+        let tip = Double(bill * tipPercentages[index])
+        let total = bill + tip
+        
+        tipLabel.text = String(format: "+$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+    }
 
-    func loadDefaultTipPercentages() {
+    func loadDefaultTipPercentages() -> Int {
         let defaults = UserDefaults.standard
         let tipPercentageIndex = defaults.integer(forKey: "defaultTipPercentageIndex")
+        let tipPercentageIndexInt = Int(tipPercentageIndex)
         
-        tipControl.selectedSegmentIndex =  Int(tipPercentageIndex)
+        tipControl.selectedSegmentIndex = tipPercentageIndexInt
+        
+        return tipPercentageIndexInt
     }
     
     let menuBar: MenuBar = {
@@ -68,6 +85,8 @@ class ViewController: UIViewController {
         view.addSubview(menuBar)
         view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
+        menuBar.viewController = self
+        menuBar.setDefaultSelection()
     }
     
     func setupSettingsButton() {
@@ -81,6 +100,7 @@ class ViewController: UIViewController {
     
     func handleSettings() {
         billField.resignFirstResponder()
+        settingsLauncher.viewController = self
         settingsLauncher.showSettings()
     }
     
@@ -92,6 +112,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadDefaultTipPercentages()
+        menuBar.setDefaultSelection()
         calculateTip(self)
         
         self.navigationController?.navigationBar.barTintColor = UIColor.red

@@ -13,7 +13,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //cv.backgroundColor = UIColor(colorLiteralRed: 81/255, green: 169/255, blue: 90/255, alpha: 1)
         cv.backgroundColor = UIColor.white
         cv.dataSource = self;
         cv.delegate = self;
@@ -22,6 +21,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     let cellId = "cellId"
     let imageNames = ["oneStar", "twoStars", "threeStars"]
+    var viewController: ViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,8 +31,11 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addSubview(collectionView)
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
-        
-        let selectedIndexPath = NSIndexPath(row: 1, section: 0)
+    }
+    
+    func setDefaultSelection() {
+        let tipPercentageIndex = self.viewController?.loadDefaultTipPercentages()
+        let selectedIndexPath = NSIndexPath(row: tipPercentageIndex!, section: 0)
         collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
     }
     
@@ -63,21 +66,14 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.item
+        self.viewController?.calculateTip(index: index)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //override func viewDidAppear(_ animated: Bool) {
-    //    loadDefaultTipPercentages()
-    //}
-    
-    //func loadDefaultTipPercentages() {
-    //let defaults = UserDefaults.standard
-    //    let tipPercentageIndex = defaults.integer(forKey: "defaultTipPercentageIndex")
-
-    //    let selectedIndexPath = NSIndexPath(row: tipPercentageIndex, section: 0)
-    //    collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
-    //}
 }
 
 class TipPercentageCell: UICollectionViewCell {

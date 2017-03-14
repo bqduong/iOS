@@ -39,6 +39,8 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
                 Setting(name: "Cancel", imageName: "cancel"),]
     }()
     
+    var viewController: ViewController?
+    
     func showSettings() {
         if let window = UIApplication.shared.keyWindow {
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -95,6 +97,29 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let setting = settings[indexPath.item]
+        print(setting.name)
+
+        if(setting.name == "Cancel") {
+            handleDismiss()
+        } else {
+            let index = indexPath.item
+            saveDefaultTip(index: index)
+            self.viewController?.calculateTip(index: index)
+            self.viewController?.menuBar.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+            handleDismiss()
+        }
+    }
+    
+    func saveDefaultTip(index: Int) {
+        let defaultTipPercentageIndex = index
+        let defaults = UserDefaults.standard
+        defaults.setValue(defaultTipPercentageIndex, forKey: "defaultTipPercentageIndex")
+        defaults.synchronize()
     }
     
     override init() {
