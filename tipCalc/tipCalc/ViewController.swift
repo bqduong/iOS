@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     let settingsLauncher = SettingsLauncher()
     
     func handleSettings() {
+        billField.resignFirstResponder()
         settingsLauncher.showSettings()
     }
     
@@ -94,8 +95,6 @@ class ViewController: UIViewController {
         calculateTip(self)
         
         self.navigationController?.navigationBar.barTintColor = UIColor.red
-        
-        //self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 81/255, green: 169/255, blue: 90/255, alpha: 1)
         
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }

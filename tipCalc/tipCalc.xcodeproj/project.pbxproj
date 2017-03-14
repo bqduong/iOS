@@ -18,6 +18,7 @@
 		CB2338CC1E7641220004CD85 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CB1E7641220004CD85 /* MenuBar.swift */; };
 		CB2338CE1E7646460004CD85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CD1E7646460004CD85 /* Extensions.swift */; };
 		CB2338D01E77AD580004CD85 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338CF1E77AD580004CD85 /* SettingsLauncher.swift */; };
+		CB2338D21E77B8B00004CD85 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2338D11E77B8B00004CD85 /* SettingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		CB2338CB1E7641220004CD85 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		CB2338CD1E7646460004CD85 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CB2338CF1E77AD580004CD85 /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		CB2338D11E77B8B00004CD85 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CB2338CB1E7641220004CD85 /* MenuBar.swift */,
+				CB2338D11E77B8B00004CD85 /* SettingCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				CB23389C1E67B9170004CD85 /* ViewController.swift in Sources */,
 				CB2338D01E77AD580004CD85 /* SettingsLauncher.swift in Sources */,
 				CB23389A1E67B9170004CD85 /* AppDelegate.swift in Sources */,
+				CB2338D21E77B8B00004CD85 /* SettingCell.swift in Sources */,
 				CB2338CC1E7641220004CD85 /* MenuBar.swift in Sources */,
 				CB2338C81E70D7350004CD85 /* SettingsViewController.swift in Sources */,
 			);
